@@ -1,0 +1,27 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 50px;
+}
+
+#todo-list {
+  margin-bottom: 30px;
+}
+
+#todo-form {
+  margin-bottom: 50px;
+}
+
+#sort-form {
+  margin-bottom:10px;
+}
+
+table {
+  margin: 0 auto;
+}
+
+#sorted_values {
+  word-wrap: break-word
+}
