@@ -1,22 +1,10 @@
-var _ = require('underscore');
 var util = require('./util');
 
+/* bubbleSort - use the bubble sort algorithm to sort integers that are passed in
+ *              as a space delimited string.
+*/
 var bubbleSort = function(stringValues, callback) {
   console.log("Inside bubbleSort!");
-/*  if (!stringValues) {
-    return callback("Error: No inputs provided");
-  } else if (/[^0-9 ]/.test(stringValues)) {
-    console.log("Invalid character was entered");
-    return callback("Error: invalid character entered");
-  } else {
-    console.log("Passed regular expression test");
-    var arrayInput = stringValues.split(' ');
-    var unsortedArray = _.map(arrayInput, function(intString) {
-      return parseInt(intString);
-    });
-    var values = _.filter(unsortedArray, function(value) {
-      return value;
-    }); */
   util.cleanse_inputs(stringValues, function(err, values) {
     if (err) {
       console.log("Error found in cleanse_inputs");
@@ -51,6 +39,9 @@ var bubbleSort = function(stringValues, callback) {
   })
 }
 
+/* getSortStats - creates and returns an object containing the bubble sort
+ *                runtime data.
+*/
 var getSortStats = function(callback) {
   var stats = {
     worstCase: 'O(n*n)',

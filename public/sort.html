@@ -1,0 +1,81 @@
+<!-- SORT TAB HTML -->
+<div>
+	<div class="col-sm-8 col-sm-offset-2">
+		<h2>Sorting Algorithms</h2>
+	</div>
+	<div class="col-sm-2">
+	  <p class="text-center" ng-show="loading">
+		  <span class="fa fa-spinner fa-spin fa-3x"></span>
+	  </p>
+	</div>
+</div>
+<!-- RADIO BUTTONS TO SELECT WHICH SORTING ALGORITHM -->
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<form name="algorithm_radio_form">
+			<label class="col-sm-2" ng-repeat="sortFuncName in sortingAlgorithms">
+		    <input type="radio" ng-model="$parent.selectedAlgorithm" value="{{sortFuncName}}">
+				{{ sortFuncName }}
+			</label>
+		</form>
+	</div>
+</div>
+<!-- FORM TO ENTER VALUES AND SORT METHOD -->
+<div class="row sort-form">
+	<div class="col-sm-8 col-sm-offset-2 text-center">
+		<form>
+			<div class="form-group">
+
+				<!-- BIND THIS VALUE TO formData.sortValues IN ANGULAR -->
+				<textarea class="form-control input-lg text-center" rows="3" placeholder="Enter space separated values to sort" ng-model="formData.sortValues"></textarea>
+			</div>
+
+			<!-- doSort() WILL PASS VALUES IN FOR SORTING -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="doSort()" ng-disabled="formData.sortValues.length == 0">Sort</button>
+		</form>
+	</div>
+</div>
+
+<!-- AREA TO DISPLAY THE SORTED VALUES AND SORT FUNCTION RUNTIME -->
+<div class="row sort-form" ng-show="sortedData.values">
+  <div class="col-sm-8 col-sm-offset-2">
+  	<h3>{{ lastSortAlgorithm }} Sorted values</h3>
+    <div class="row text-center">
+			<p>{{ sortedData.values }}</p>
+		</div>
+		<div class="row text-center" ng-show="sortedData.duration >= 0">
+			<p>Sort took {{ sortedData.duration }} milliseconds</p>
+		</div>
+	</div>
+</div>
+
+<!-- FORM TO REQUEST ALGORITHM INFORMATION -->
+<div class="row sort-form">
+	<div class="col-sm-8 col-sm-offset-2 text-center">
+		<form>
+			<!-- getAlgorithmInfo() WILL QUERY THE SERVER FOR THE SELECTED ALGORITHM INFO -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="getAlgorithmInfo()">Get Info</button>
+		</form>
+	</div>
+</div>
+
+<!-- AREA TO DISPLAY THE ALGORITHM INFORMATION -->
+<div class="row sort-form" ng-show="algorithmInfo">
+	<div class="col-sm-8 col-sm-offset-2">
+  	<h3>{{ lastInfoAlgorithm }} Algorithm Metrics</h3>
+		<table class="table table-striped table-bordered table-hover text-center">
+			<thead>
+				<tr>
+					<th>Metric</th>
+					<th>Stat</th>
+				</tr>
+			</thead>
+		  <tbody>
+			  <tr ng-repeat="(metric, data) in algorithmInfo">
+			  	<td>{{ metric }}</td>
+					<td>{{ data }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

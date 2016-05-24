@@ -14,12 +14,16 @@ body {
   margin-bottom: 50px;
 }
 
-#sort-form {
+.sort-form {
   margin-bottom:10px;
 }
 
 table {
   margin: 0 auto;
+}
+
+table th {
+  background-color: #e0e0e0;
 }
 
 #sorted_values {

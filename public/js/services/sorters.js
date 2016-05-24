@@ -8,10 +8,7 @@ angular.module('sortService', [])
 				return $http.get('/api/sort/' + functionName);
 			},
 			doSort : function(functionName, unsortedValues) {
-				return $http.post('/api/sort', {algorithm: functionName, values: unsortedValues});
+				return $http.post('/api/sort/' + functionName, {values: unsortedValues});
 			},
-/*			delete : function(id) {
-				return $http.delete('/api/todos/' + id);
-			} */
 		}
 	}]);

@@ -18,14 +18,12 @@ function getTodos(res) {
 // api ---------------------------------------------------------------------
 // get all todos
 router.get('/', function (req, res) {
-  console.log("Inside get /");
   // use mongoose to get all todos in the database
   getTodos(res);
 });
 
 // create todo and send back all todos after creation
 router.post('/', function (req, res) {
-  console.log("Inside post /");
   // create a todo, information comes from AJAX request from Angular
   Todo.create({
     text: req.body.text,
@@ -41,7 +39,6 @@ router.post('/', function (req, res) {
 
 // delete a todo
 router.delete('/:todo_id', function (req, res) {
-  console.log("Inside delete /:todo_id for: " + req.params.todo_id);
   Todo.remove({
     _id: req.params.todo_id
   }, function (err, todo) {
